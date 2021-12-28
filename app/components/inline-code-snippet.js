@@ -1,0 +1,1 @@
+export { default } from 'ember-cli-code-snippet/components/inline-code-snippet';
