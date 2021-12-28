@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-code-snippet",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "ember-cli add-on for displaying code snippets.",
   "keywords": [
     "ember-addon"
