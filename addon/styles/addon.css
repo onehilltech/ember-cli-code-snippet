@@ -1,11 +1,14 @@
 .code-snippet {
   position: relative;
   border-radius: 7px;
+
   padding-bottom: 10px;
 }
 
 .code-snippet pre {
   margin: 0;
+  overflow-x: auto;
+  padding-bottom: 16px;
 }
 
 .code-snippet .code-snippet__code {
@@ -21,6 +24,14 @@
 
   justify-content: flex-end;
   align-items: center;
+
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.code-snippet .code-snippet__footer {
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 .code-snippet .code-snippet__lang {
