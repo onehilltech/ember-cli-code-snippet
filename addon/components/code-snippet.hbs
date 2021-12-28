@@ -1,8 +1,27 @@
-<div class="code-snippet">
-<pre>
-  <code class="{{this.lang}}" {{did-insert this.didInsert}}>
-    {{yield}}
-  </code>
-</pre>
+<div class="code-snippet hljs">
+  <div class="code-snippet__header">
+    <span class="code-snippet__title">{{@title}}</span>
+
+    {{#if this.showLanguageName}}
+      <span class="code-snippet__lang">{{this.languageName}}</span>
+    {{/if}}
+
+    {{#if this.enableCopyButton}}
+      <span class="code-snippet__copy" {{did-insert this.didInsertCopyButton}}>
+        {{#if @copyButtonImage}}
+          <img src={{@copyButtonImage}} alt="Copy to clipboard"  />
+        {{else if @copyButtonIcon}}
+          <i class="{{@copyButtonIconClass}}">{{@copyButtonIcon}}</i>
+        {{else}}
+          <span>{{this.copyButtonLabel}}</span>
+        {{/if}}
+      </span>
+
+    {{/if}}
+  </div>
+  <pre><code class="code-snippet__code {{this.languageClassName}}" {{did-insert this.didInsertCode}}>{{yield}}</code></pre>
+  {{#if @footer}}
+    <div class="code-snippet__footer"></div>
+  {{/if}}
 </div>
 

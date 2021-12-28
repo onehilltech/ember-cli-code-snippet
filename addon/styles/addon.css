@@ -1,6 +1,53 @@
 .code-snippet {
+  position: relative;
+  border-radius: 7px;
+  padding-bottom: 10px;
+}
+
+.code-snippet pre {
+  margin: 0;
+}
+
+.code-snippet .code-snippet__code {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.code-snippet .code-snippet__header {
+  padding: 8px 16px;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.code-snippet .code-snippet__lang {
 
 }
+
+.code-snippet .code-snippet__title {
+  flex-grow: 1;
+}
+
+.code-snippet .code-snippet__copy {
+  margin-left: 8px;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.code-snippet .code-snippet__copy img {
+  height: 20px;
+}
+
+.code-snippet .code-snippet__copy i {
+  font-size: 20px;
+}
+
 
 .inline-code-snippet {
   border-radius: 3px;
