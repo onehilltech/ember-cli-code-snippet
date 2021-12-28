@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action, getWithDefault } from '@ember/object';
 import { isPresent } from '@ember/utils';
 import { tracked } from "@glimmer/tracking";
+import { htmlSafe } from '@ember/template';
 
 import hljs from 'highlight.js';
 import Clipboard from 'clipboard';
@@ -18,12 +19,14 @@ export default class CodeSnippetComponent extends Component {
 
   @action
   didInsertCode (element) {
-    // Save the original code in case the copy button in pressed.
-    this.code = element.innerHTML;
     this.copied = false;
 
+    const code = htmlSafe (element.innerHTML)
+    const language = this.lang;
+
     // Highlight the code.
-    hljs.highlightElement (element);
+    this.highlight = hljs.highlight (code.string, { language });
+    element.innerHTML = this.highlight.value;
   }
 
   @action
@@ -32,7 +35,7 @@ export default class CodeSnippetComponent extends Component {
 
     this._clipboard = new Clipboard (element, {
       text () {
-        return snippet.code;
+        return snippet.highlight.code;
       }
     });
 
@@ -72,7 +75,7 @@ export default class CodeSnippetComponent extends Component {
   }
 
   get lang () {
-    return this.args.lang;
+    return this.args.lang || (isPresent (this.highlight) ? this.highlight.language : undefined);
   }
 
   get showLanguageName () {
