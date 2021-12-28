@@ -21,11 +21,11 @@ export default class CodeSnippetComponent extends Component {
   didInsertCode (element) {
     this.copied = false;
 
-    const code = htmlSafe (element.innerHTML)
+    const code = element.textContent;
     const language = this.lang;
 
     // Highlight the code.
-    this.highlight = hljs.highlight (code.string, { language });
+    this.highlight = hljs.highlight (code, { language });
     element.innerHTML = this.highlight.value;
   }
 
